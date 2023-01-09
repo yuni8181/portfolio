@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마우스움직임이펙트</title>
+    <!-- script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  
+    <style>
+        * {
+          margin: 0;
+          padding: 0;
+        }
+        body {position: fixed;
+            width: 100%;
+            height: 100%;
+        background-color: blueviolet;}
+   
+
+        .box {
+            position: fixed;
+         
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;}
+  
+        .box p {
+          font-size: 28px;
+          color: #fff;
+          line-height: 2;
+         
+        }
+        .count {
+          position: fixed;
+          font-size: 30px;
+          font-weight: bold;
+          right: 150px;
+          top: 50px;
+          color: #fff;
+          /* z-index: 3; */
+        }
+    
+  
+        .box span {
+          border-bottom: dashed 3px #fff;
+       
+          padding-bottom: 2px;
+          background-color: #333;
+        }
+  
+        .cursor {
+          position: absolute;
+       z-index: 9999;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.1);
+          border: 3px solid red;
+          left: 0;
+          top: 0;
+          transition: background-color 0.5s, 
+          border-color 0.5s,
+          border-radius 0.5s,
+          transform 0.2s;
+          pointer-events: none; /*관통해서 클릭해라*/
+         
+        }
+  
+        .cursor.style1 {
+          background-color: rgba(255, 165, 0, 0.4);
+          border-color: orange;
+        }
+        
+        .cursor.style2 {
+          border-radius: 0;
+          transform: rotate(360deg);
+        }
+  
+  
+      </style>
+  
+ 
+  </head>
+  <body>
+    <div class="cursor"></div>
+
+    <div class="count">
+      <p>X 좌표 : <em>00</em></p>
+      <p>Y 좌표 : <em>00</em></p>
+    </div>
+
+
+
+    <div class="box">
+        <p>
+          Lorem ipsum <span class="style1">dolor</span> sit amet
+          <span class="style2">adipisicing</span> elit.
+          <span class="style3">Cumque</span>, repudiandae aspernatur inventore
+          <br />
+          deserunt <span class="style4">laborum</span> tempore quis culpa
+          excepturi, <span class="style5">aliquam</span>, saepe quaerat inventore!
+        </p>
+      </div>
+    <script>
+    $(document).ready(function(){
+
+        $(window).mousemove(function(e){
+
+
+$('.cursor').css({'left':e.clientX-25,top:e.clientY-25})
+
+
+
+});
+
+
+        $('.style1').mouseenter(function(){
+
+$('.cursor').addClass('style1')
+        })
+
+        $('.style1').mouseleave(function(){
+
+$('.cursor').removeClass('style1')
+        })
+    })
+    </script>
+  </body>
+</html>
