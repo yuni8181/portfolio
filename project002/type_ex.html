@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <style>
+        :root{
+             --color-black : #ddd;
+             --main-color: red;
+             --margin-left :10px
+        }
+
+        #title {color: var(--main-color);
+            margin: var(--margin-left);}
+    </style>
+</head>
+<body>
+
+    <h1 id="title">Lorem ipsum dolor sit amet </h1>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded',()=> {
+            new TypeIt('#title')
+            .pause(1000)
+
+            .delete(3,{delay:1000})
+            .type('Apple')
+            .go()
+        })
+    </script>
+</body>
+</html>
